@@ -64,14 +64,14 @@ class _LandingScrenState extends State<LandingScren> {
               height: 20,
             ),
             EcoButton(
-              title: "Login As Admin",
+              title: "Login As User",
               onPress: () {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (_) => UserLogin()));
               },
             ),
             EcoButton(
-              title: "Login As User",
+              title: "Login As Gurdian",
               onPress: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (_) => GuardianLoginScreen()));

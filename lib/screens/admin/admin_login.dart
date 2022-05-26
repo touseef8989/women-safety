@@ -1,157 +1,129 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:women_safety_fyp/screens/admin/admin_main_screen.dart';
-import 'package:women_safety_fyp/screens/user_Screen/user_login_screen.dart';
-import 'package:women_safety_fyp/widgets/eco_dialogue.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
-
-import '../../services/firebase_services.dart';
+import 'package:women_safety_fyp/screens/admin/admin_main_screen.dart';
+import '../../../widgets/ecotextfield.dart';
 import '../../utils/styles.dart';
 import '../../widgets/eco_button.dart';
-import '../../widgets/ecotextfield.dart';
 
-class AdminSignUp extends StatefulWidget {
+class AdminLoginScreen extends StatefulWidget {
+  static const String id = "adminlogin";
+
+  const AdminLoginScreen({Key? key}) : super(key: key);
   @override
-  State<AdminSignUp> createState() => _AdminSignUpState();
+  State<AdminLoginScreen> createState() => _AdminLoginScreenState();
 }
 
-class _AdminSignUpState extends State<AdminSignUp> {
-  // const WebLoginScreen({Key? key}) : super(key: key);
-  TextEditingController userNameC = TextEditingController();
+class _AdminLoginScreenState extends State<AdminLoginScreen> {
+  FirebaseAuth auth = FirebaseAuth.instance;
 
+  TextEditingController emailC = TextEditingController();
   TextEditingController passwordC = TextEditingController();
 
-  final formKey = GlobalKey<FormState>();
+  final formkey = GlobalKey<FormState>();
   bool formStateLoading = false;
-  bool ispassword = true;
+  final String username = "admin";
+  final String Password = "12345";
 
   submit(BuildContext context) async {
-    if (formKey.currentState!.validate()) {
+    if (formkey.currentState!.validate()) {
+      if (emailC.text == username && passwordC.text == Password) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => AdminMainScreen()));
+      }
+
       setState(() {
         formStateLoading = true;
       });
-      await FirebaseFirestore.instance.collection('admin').get().then((value) {
-        print('${value.docs.first['gmail']}');
-
-        if (value.docs.first['gmail'] == userNameC.text &&
-            value.docs.first['password'] == passwordC.text) {
-          print("OKKK");
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => AdminMainScreen()));
-        } else {
-          setState(() {
-            formStateLoading = false;
-          });
-          showDialog(
-              context: context,
-              builder: (_) {
-                return EcoDialogue(title: 'some values are not correct');
-              });
-        }
-      });
-      // await FirebaseServices.adminSignIn(userNameC.text).then((value) async {
-      //   if (!value.exists) {
-      //     print("OOOOOOOOOOOOOOOOOOOOOOOOKKKKKKKKKK");
-      //   }
-      //   if (value['username'] == userNameC.text &&
-      //       value['password'] == passwordC.text) {
-      //     try {
-      //       UserCredential user =
-      //           await FirebaseAuth.instance.signInAnonymously();
-      //       if (user != null) {
-      //         Navigator.push(context,
-      //             MaterialPageRoute(builder: (_) => AdminMainScreen()));
-      //       }
-      //     } catch (e) {
-      //       setState(() {
-      //         formStateLoading = false;
-      //       });
-      //       showDialog(
-      //           context: context,
-      //           builder: (_) {
-      //             return EcoDialogue(
-      //               title: e.toString(),
-      //             );
-      //           });
-      //     }
-      //   }
-      // });
-
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SafeArea(
+        // ignore: sized_box_for_whitespace
         child: Container(
-          decoration: BoxDecoration(
-              // border: Border.all(color: Colors.black, width: 3),
-              // borderRadius: BorderRadius.circular(12)
-
+          width: double.infinity,
+          child: ListView(
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: const Text(
+                  "Admin Login",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 255, 117, 163),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
               ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
-            child: Form(
-              key: formKey,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: 150.0,
+                height: 150.0,
+                decoration: new BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                      color: Color.fromARGB(255, 248, 201, 217),
+                      width: 10.0,
+                      style: BorderStyle.solid),
+                  image: new DecorationImage(
+                    fit: BoxFit.fitHeight,
+                    image: NetworkImage(
+                        "https://library.kissclipart.com/20180903/xrw/kissclipart-profile-icon-pink-clipart-computer-icons-user-prof-7c23a79c0e6c539f.png"),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Column(
                 children: [
-                  const Text(
-                    "WELCOME ADMIN",
-                    style: EcoStyle.boldStyle,
-                  ),
-                  const Text(
-                    "Log in to your Account",
-                    style: EcoStyle.boldStyle,
-                  ),
-                  EcoTextField(
-                    controller: userNameC,
-                    hintText: "UserName...",
-                    maxLines: 1,
-                    validate: (v) {
-                      if (!v!.contains("@gmail.com") && v.length < 0) {
-                        return "email is badly formated";
-                      }
-                      return null;
-                    },
-                  ),
-                  EcoTextField(
-                    controller: passwordC,
-                    isPassowrd: ispassword,
-                    maxLines: 1,
-                    hintText: "Password...",
-                    icon: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          ispassword = !ispassword;
-                        });
-                      },
-                      icon: ispassword
-                          ? const Icon(Icons.visibility)
-                          : const Icon(Icons.visibility_off),
+                  Form(
+                    key: formkey,
+                    child: Column(
+                      children: [
+                        EcoTextField(
+                            controller: emailC,
+                            hintText: "user name...",
+                            validate: (v) {
+                              //   if (v!.isEmpty) {
+                              //     return "email is badly formated";
+                              //   }
+                              //   return null;
+                              // },
+                            }),
+                        EcoTextField(
+                          controller: passwordC,
+                          hintText: "Password...",
+                          validate: (v) {
+                            if (v!.isEmpty) {
+                              return "user name should not be empty";
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        EcoButton(
+                          isLoginButton: true,
+                          title: "LogIn",
+                          isLoading: formStateLoading,
+                          onPress: () {
+                            submit(context);
+                          },
+                        ),
+                      ],
                     ),
-                    validate: (v) {
-                      if (v!.isEmpty) {
-                        return "password should not be empty";
-                      }
-                      return null;
-                    },
-                  ),
-                  EcoButton(
-                    isLoginButton: true,
-                    title: "LOGIN",
-                    isLoading: formStateLoading,
-                    onPress: () {
-                      // submit(context);
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => AdminMainScreen()));
-                    },
                   ),
                 ],
               ),
-            ),
+            ],
           ),
         ),
       ),

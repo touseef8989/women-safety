@@ -26,10 +26,14 @@ class EcoButton extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 17, vertical: 10),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: isLoginButton == false ? Colors.white : Colors.black,
+          color: isLoginButton == false
+              ? Colors.white
+              : Color.fromARGB(255, 255, 117, 163),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
-              color: isLoginButton == false ? Colors.black : Colors.black),
+              color: isLoginButton == false
+                  ? Color.fromARGB(255, 255, 117, 163)
+                  : Color.fromARGB(255, 255, 117, 163)),
         ),
         child: Stack(
           children: [
@@ -39,8 +43,9 @@ class EcoButton extends StatelessWidget {
                 child: Text(
                   title ?? "button",
                   style: TextStyle(
-                      color:
-                          isLoginButton == false ? Colors.black : Colors.white,
+                      color: isLoginButton == false
+                          ? Color.fromARGB(255, 255, 117, 163)
+                          : Colors.white,
                       fontSize: 16),
                 ),
               ),

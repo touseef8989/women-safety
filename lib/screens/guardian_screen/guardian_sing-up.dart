@@ -1,8 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:women_safety_fyp/screens/guardian_screen/category/doctor_specilzatin.dart';
 import 'package:women_safety_fyp/screens/guardian_screen/guardian-Login.dart';
-import 'package:women_safety_fyp/screens/user_Screen/user_login_screen.dart';
-import 'package:women_safety_fyp/services/share_preff.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -21,11 +18,8 @@ class _DoctorSignupScreenState extends State<DoctorSignupScreen> {
   TextEditingController emailC = TextEditingController();
   TextEditingController childemailC = TextEditingController();
 
-  TextEditingController infoC = TextEditingController();
   TextEditingController passwordC = TextEditingController();
   TextEditingController retypepasswordC = TextEditingController();
-  TextEditingController doctorAddressC = TextEditingController();
-  TextEditingController docSpecilizatipnC = TextEditingController();
   TextEditingController phoneNumberC = TextEditingController();
   TextEditingController nameC = TextEditingController();
   TextEditingController pmcNumberC = TextEditingController();
@@ -103,164 +97,207 @@ class _DoctorSignupScreenState extends State<DoctorSignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Container(
-            width: double.infinity,
-            child: Column(
-              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // const Text(
-                //   "",
-                //   textAlign: TextAlign.center,
-                //   style: EcoStyle.boldStyle,
-                // ),
-
-                // Image.asset(
-                //   "images/patient_login.png",
-                //   height: 150,
-                // ),
-                const SizedBox(
-                  height: 150,
-                ),
-                const Text(
-                  "Guardian Signup",
-                  textAlign: TextAlign.center,
-                  style: EcoStyle.boldStyle,
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                Column(
-                  children: [
-                    SingleChildScrollView(
-                      child: Form(
-                          key: formkey,
-                          child: Column(
-                            children: [
-                              EcoTextField(
-                                check: true,
-                                validate: (v) {
-                                  if (v!.length < 5) {
-                                    return "name is not too short";
-                                  }
-                                  return null;
-                                },
-                                inputAction: TextInputAction.next,
-                                isPassowrd: false,
-                                controller: nameC,
-                                hintText: "Name...",
-                                icon: const Icon(Icons.person),
-                              ),
-                              EcoTextField(
-                                check: true,
-                                validate: (v) {
-                                  if (!v!.contains("@gmail.com") &&
-                                      v.length < 0) {
-                                    return "email is badly formated";
-                                  }
-                                  return null;
-                                },
-                                inputAction: TextInputAction.next,
-                                isPassowrd: false,
-                                controller: emailC,
-                                hintText: "Email...",
-                                icon: const Icon(Icons.email),
-                              ),
-                              EcoTextField(
-                                check: true,
-                                validate: (v) {
-                                  if (!v!.contains("@gmail.com") &&
-                                      v.length < 0) {
-                                    return "email is badly formated";
-                                  }
-                                  return null;
-                                },
-                                inputAction: TextInputAction.next,
-                                isPassowrd: false,
-                                controller: childemailC,
-                                hintText: "Child Email...",
-                                icon: const Icon(Icons.email),
-                              ),
-                              EcoTextField(
-                                validate: (v) {
-                                  if (v!.isEmpty || v.length < 6) {
-                                    return "password should not be empty";
-                                  }
-                                  return null;
-                                },
-                                focusNode: passwordfocus,
-                                inputAction: TextInputAction.next,
-                                isPassowrd: ispassword,
-                                controller: passwordC,
-                                hintText: "Password...",
-                                icon: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      ispassword = !ispassword;
-                                    });
-                                  },
-                                  icon: ispassword
-                                      ? const Icon(Icons.visibility)
-                                      : const Icon(Icons.visibility_off),
-                                ),
-                              ),
-                              EcoTextField(
-                                isPassowrd: isretypepassword,
-                                controller: retypepasswordC,
-                                validate: (v) {
-                                  if (v!.isEmpty || v.length < 6) {
-                                    return "password should not be empty";
-                                  }
-                                  return null;
-                                },
-                                hintText: "Retype Password...",
-                                icon: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      isretypepassword = !isretypepassword;
-                                    });
-                                  },
-                                  icon: isretypepassword
-                                      ? const Icon(Icons.visibility)
-                                      : const Icon(Icons.visibility_off),
-                                ),
-                              ),
-                              EcoTextField(
-                                isPassowrd: false,
-                                controller: phoneNumberC,
-                                validate: (v) {
-                                  if (v!.isEmpty || v.length > 11) {
-                                    return "Phone Number";
-                                  }
-                                  return null;
-                                },
-                                hintText: "Phone Number...",
-                                icon: const Icon(Icons.phone_iphone_rounded),
-                              ),
-                              EcoButton(
-                                title: "SIGNUP",
-                                isLoginButton: true,
-                                onPress: () {
-                                  submit();
-                                },
-                                isLoading: formStateLoading,
-                              ),
-                            ],
-                          )),
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: SafeArea(
+            child: Container(
+              width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    "Guardian Signup",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 255, 117, 163),
                     ),
-                  ],
-                ),
-                // const SizedBox(height: 50),
-                EcoButton(
-                  title: "BACK TO LOGIN",
-                  onPress: () {
-                    Navigator.pop(context);
-                  },
-                  isLoginButton: false,
-                ),
-              ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    width: 120.0,
+                    height: 120.0,
+                    decoration: new BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                          color: Color.fromARGB(255, 248, 201, 217),
+                          width: 10.0,
+                          style: BorderStyle.solid),
+                      image: new DecorationImage(
+                        fit: BoxFit.fitHeight,
+                        image: NetworkImage(
+                            "https://st2.depositphotos.com/3557671/11164/v/950/depositphotos_111644880-stock-illustration-man-avatar-icon-of-vector.jpg"),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Column(
+                    children: [
+                      SingleChildScrollView(
+                        child: Form(
+                            key: formkey,
+                            child: Column(
+                              children: [
+                                EcoTextField(
+                                  check: true,
+                                  validate: (v) {
+                                    if (v!.length < 5) {
+                                      return "name is not too short";
+                                    }
+                                    return null;
+                                  },
+                                  inputAction: TextInputAction.next,
+                                  isPassowrd: false,
+                                  controller: nameC,
+                                  hintText: "Name...",
+                                  icon: const Icon(
+                                    Icons.person,
+                                    color: Color.fromARGB(255, 255, 134, 174),
+                                  ),
+                                ),
+                                EcoTextField(
+                                  check: true,
+                                  validate: (v) {
+                                    if (!v!.contains("@gmail.com") &&
+                                        v.length < 0) {
+                                      return "email is badly formated";
+                                    }
+                                    return null;
+                                  },
+                                  inputAction: TextInputAction.next,
+                                  isPassowrd: false,
+                                  controller: emailC,
+                                  hintText: "Email...",
+                                  icon: const Icon(
+                                    Icons.email,
+                                    color: Color.fromARGB(255, 255, 134, 174),
+                                  ),
+                                ),
+                                EcoTextField(
+                                  check: true,
+                                  validate: (v) {
+                                    if (!v!.contains("@gmail.com") &&
+                                        v.length < 0) {
+                                      return "email is badly formated";
+                                    }
+                                    return null;
+                                  },
+                                  inputAction: TextInputAction.next,
+                                  isPassowrd: false,
+                                  controller: childemailC,
+                                  hintText: "Child Email...",
+                                  icon: const Icon(
+                                    Icons.email,
+                                    color: Color.fromARGB(255, 255, 134, 174),
+                                  ),
+                                ),
+                                EcoTextField(
+                                  validate: (v) {
+                                    if (v!.isEmpty || v.length < 6) {
+                                      return "password should not be empty";
+                                    }
+                                    return null;
+                                  },
+                                  focusNode: passwordfocus,
+                                  inputAction: TextInputAction.next,
+                                  isPassowrd: ispassword,
+                                  controller: passwordC,
+                                  hintText: "Password...",
+                                  icon: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        ispassword = !ispassword;
+                                      });
+                                    },
+                                    icon: ispassword
+                                        ? const Icon(
+                                            Icons.visibility,
+                                            color: Color.fromARGB(
+                                                255, 255, 134, 174),
+                                          )
+                                        : const Icon(
+                                            Icons.visibility_off,
+                                            color: Color.fromARGB(
+                                                255, 255, 134, 174),
+                                          ),
+                                  ),
+                                ),
+                                EcoTextField(
+                                  isPassowrd: isretypepassword,
+                                  controller: retypepasswordC,
+                                  validate: (v) {
+                                    if (v!.isEmpty || v.length < 6) {
+                                      return "password should not be empty";
+                                    }
+                                    return null;
+                                  },
+                                  hintText: "Retype Password...",
+                                  icon: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        isretypepassword = !isretypepassword;
+                                      });
+                                    },
+                                    icon: isretypepassword
+                                        ? const Icon(
+                                            Icons.visibility,
+                                            color: Color.fromARGB(
+                                                255, 255, 134, 174),
+                                          )
+                                        : const Icon(
+                                            Icons.visibility_off,
+                                            color: Color.fromARGB(
+                                                255, 255, 134, 174),
+                                          ),
+                                  ),
+                                ),
+                                EcoTextField(
+                                  isPassowrd: false,
+                                  controller: phoneNumberC,
+                                  validate: (v) {
+                                    if (v!.isEmpty || v.length > 11) {
+                                      return "Phone Number";
+                                    }
+                                    return null;
+                                  },
+                                  hintText: "Phone Number...",
+                                  icon: const Icon(
+                                    Icons.phone_iphone_rounded,
+                                    color: Color.fromARGB(255, 255, 134, 174),
+                                  ),
+                                ),
+                                EcoButton(
+                                  title: "SIGNUP",
+                                  isLoginButton: true,
+                                  onPress: () {
+                                    submit();
+                                  },
+                                  isLoading: formStateLoading,
+                                ),
+                              ],
+                            )),
+                      ),
+                    ],
+                  ),
+                  // const SizedBox(height: 50),
+                  EcoButton(
+                    title: "BACK TO LOGIN",
+                    onPress: () {
+                      Navigator.pop(context);
+                    },
+                    isLoginButton: false,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

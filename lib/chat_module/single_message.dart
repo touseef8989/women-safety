@@ -55,7 +55,8 @@ class SingleMessage extends StatelessWidget {
                           topRight: Radius.circular(15),
                           bottomRight: Radius.circular(15),
                         ),
-                  color: isMe! ? Colors.blue : Colors.black,
+                  color:
+                      isMe! ? Color.fromARGB(255, 248, 133, 172) : Colors.black,
                 ),
                 child: Column(
                   children: [

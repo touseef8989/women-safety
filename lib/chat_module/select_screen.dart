@@ -16,6 +16,7 @@ class SelectScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 248, 133, 172),
         title: Text('select guardian'),
       ),
       body: Padding(
@@ -45,9 +46,15 @@ class SelectScreen extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
                           height: 70,
-                          color: Colors.amber,
+                          color: Color.fromARGB(255, 250, 163, 192),
                           child: ListTile(
-                            title: Text(snapshot.data!.docs[index]['name']),
+                            title: Text(
+                              snapshot.data!.docs[index]['name'],
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
                             trailing: IconButton(
                                 onPressed: () {
                                   Navigator.push(
@@ -63,7 +70,10 @@ class SelectScreen extends StatelessWidget {
                                         ),
                                       ));
                                 },
-                                icon: Icon(Icons.chat)),
+                                icon: Icon(
+                                  Icons.chat,
+                                  color: Colors.white,
+                                )),
                           ),
                         ),
                       );

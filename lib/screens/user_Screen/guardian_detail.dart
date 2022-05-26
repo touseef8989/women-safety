@@ -42,12 +42,12 @@ class GuardianDetailScreen extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (_) => DoctorInfo(
-                                        doctorName: d['name'],
+                                  builder: (_) => GurdianInfo(
+                                        Name: d['name'],
                                         info: d['info'],
                                         id: d.id,
                                         email: d['email'],
-                                        specialization: d['specialization'],
+                                        // specialization: d['specialization'],
                                       )));
                         },
                         icon: Icon(Icons.navigate_next)),

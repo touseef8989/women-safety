@@ -19,7 +19,7 @@ class _AddContactsState extends State<AddContacts> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       //useEffect()
       updateListView();
     });
@@ -31,58 +31,60 @@ class _AddContactsState extends State<AddContacts> {
       contactList = <TContact>[];
     }
     // Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          "Trusted Contacts",
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(
-          color: Colors.black, //change your color here
-        ),
-      ),
-      body: Container(
-        width: double.infinity,
-        margin: EdgeInsets.only(top: 30, right: 20, left: 20, bottom: 0),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: Colors.black12, width: 0.5),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            "Trusted Contacts",
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Color.fromARGB(255, 248, 133, 172),
+          iconTheme: IconThemeData(
+            color: Colors.black, //change your color here
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            ButtonTheme(
-              height: 70,
-              minWidth: double.infinity,
-              child: MaterialButton(
-                onPressed: () {
-                  navigateToSelectContact();
-                },
-                elevation: 10,
-                highlightElevation: 15,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
+        body: Container(
+          width: double.infinity,
+          margin: EdgeInsets.only(top: 30, right: 20, left: 20, bottom: 0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: Colors.black12, width: 0.5),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ButtonTheme(
+                height: 70,
+                minWidth: double.infinity,
+                child: MaterialButton(
+                  onPressed: () {
+                    navigateToSelectContact();
+                  },
+                  elevation: 10,
+                  highlightElevation: 15,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                  child: Text(
+                    'Add a Trusted Contact',
+                    style: TextStyle(fontSize: 25),
+                  ),
+                  textColor: Colors.white,
+                  color: Color.fromARGB(255, 250, 163, 192),
                 ),
-                child: Text(
-                  'Add a Trusted Contact',
-                  style: TextStyle(fontSize: 25),
-                ),
-                textColor: Colors.white,
-                color: Colors.green,
               ),
-            ),
-            Expanded(
-              child: getContactListView(),
-              // padding: const EdgeInsets.all(20.0),
-            ),
-          ],
+              Expanded(
+                child: getContactListView(),
+                // padding: const EdgeInsets.all(20.0),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:women_safety_fyp/utils/styles.dart';
 import 'package:women_safety_fyp/widgets/eco_button.dart';
@@ -45,6 +44,8 @@ class _UserEditProfileState extends State<UserEditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Color.fromARGB(255, 248, 133, 172),
         title: const Text("Profile"),
       ),
       body: Padding(
@@ -59,7 +60,11 @@ class _UserEditProfileState extends State<UserEditProfile> {
                   color: Colors.black,
                   child: Text(
                     "Update Your Profile here....",
-                    style: ktitlestyle,
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 255, 117, 163),
+                    ),
                   ),
                 ),
               ),
@@ -67,27 +72,33 @@ class _UserEditProfileState extends State<UserEditProfile> {
                 check: true,
                 validate: (v) {
                   if (v!.isEmpty) {
-                    return "update your name like (areeb)";
+                    return "update your name like (user)";
                   }
                   return null;
                 },
                 inputAction: TextInputAction.next,
                 controller: eaditnamec,
                 hintText: "Update your name...",
-                icon: const Icon(Icons.edit),
+                icon: const Icon(
+                  Icons.edit,
+                  color: Color.fromARGB(255, 255, 134, 174),
+                ),
               ),
               EcoTextField(
                 check: true,
                 validate: (v) {
                   if (v!.isEmpty) {
-                    return "update your email like (areeb@gmail.com)";
+                    return "update your email like (user@gmail.com)";
                   }
                   return null;
                 },
                 inputAction: TextInputAction.next,
                 controller: eaditemailc,
                 hintText: "Update your email",
-                icon: const Icon(Icons.edit),
+                icon: const Icon(
+                  Icons.edit,
+                  color: Color.fromARGB(255, 255, 134, 174),
+                ),
               ),
               EcoTextField(
                 check: true,
@@ -100,7 +111,10 @@ class _UserEditProfileState extends State<UserEditProfile> {
                 inputAction: TextInputAction.next,
                 controller: eaditpasswordc,
                 hintText: "Update your password...",
-                icon: const Icon(Icons.edit),
+                icon: const Icon(
+                  Icons.edit,
+                  color: Color.fromARGB(255, 255, 134, 174),
+                ),
               ),
               const SizedBox(
                 height: 50,

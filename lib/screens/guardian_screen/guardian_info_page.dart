@@ -7,18 +7,16 @@ import '../../utils/styles.dart';
 // import '../chat/patient_chat.dart';
 import 'guardian_consultation_names_list.dart';
 
-class DoctorInfo extends StatelessWidget {
-  String? doctorName;
-  String? specialization;
+class GurdianInfo extends StatelessWidget {
+  String? Name;
   String? info;
   String? id;
   String? email;
   // String?
 
-  DoctorInfo({
-    this.doctorName,
+  GurdianInfo({
+    this.Name,
     this.info,
-    this.specialization,
     this.id,
     this.email,
   });
@@ -108,17 +106,17 @@ class DoctorInfo extends StatelessWidget {
                           Column(
                             children: [
                               Text(
-                                "Doctor $doctorName",
+                                "Doctor $Name",
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
                                 ),
                               ),
 
-                              Text(
-                                specialization!,
-                                style: ksubtitlestyle,
-                              ),
+                              // Text(
+                              //   specialization!,
+                              //   style: ksubtitlestyle,
+                              // ),
                               // Text(specialization!),
                             ],
                           ),
@@ -161,7 +159,7 @@ class DoctorInfo extends StatelessWidget {
                         builder: (context) => ChatScreen(
                           currentUserId: FirebaseAuth.instance.currentUser!.uid,
                           friendId: id,
-                          friendName: doctorName,
+                          friendName: Name,
                           // friendImage:
                           //     'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png',
                         ),

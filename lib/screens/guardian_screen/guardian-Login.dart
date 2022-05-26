@@ -70,20 +70,6 @@ class _GuardianLoginScreenState extends State<GuardianLoginScreen> {
         print(e);
         return null;
       }
-      // String? accountstatus = await FirebaseServices.signInAccountDoctorLogin(
-      //     emailC.text, passwordC.text);
-      // //print(accountstatus);
-      // if (accountstatus != null) {
-      //   ecoDialogue(accountstatus);
-      //   setState(() {
-      //     formStateLoading = false;
-      //   });
-      // } else {
-      //   _firestore.collection('users').doc(_auth.currentUser!.uid).get().then(
-      //       (value) => userCredential.user!.updateDisplayName(value['name']));
-      //   Navigator.push(
-      //       context, MaterialPageRoute(builder: (_) => DoctorHomeScreen()));
-      // }
     }
   }
 
@@ -93,11 +79,9 @@ class _GuardianLoginScreenState extends State<GuardianLoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        // ignore: sized_box_for_whitespace
         child: Container(
           width: double.infinity,
           child: ListView(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const SizedBox(
                 height: 50,
@@ -105,15 +89,34 @@ class _GuardianLoginScreenState extends State<GuardianLoginScreen> {
               const Text(
                 "Guardian Login",
                 textAlign: TextAlign.center,
-                style: EcoStyle.boldStyle,
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 255, 117, 163),
+                ),
               ),
               const SizedBox(
-                height: 50,
+                height: 30,
               ),
-              // Image.asset(
-              //   "images/patient_login.png",
-              //   height: 150,
-              // ),
+              Container(
+                width: 150.0,
+                height: 150.0,
+                decoration: new BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                      color: Color.fromARGB(255, 248, 201, 217),
+                      width: 10.0,
+                      style: BorderStyle.solid),
+                  image: new DecorationImage(
+                    fit: BoxFit.fitHeight,
+                    image: NetworkImage(
+                        "https://st2.depositphotos.com/3557671/11164/v/950/depositphotos_111644880-stock-illustration-man-avatar-icon-of-vector.jpg"),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
               Column(
                 children: [
                   Form(
@@ -123,6 +126,10 @@ class _GuardianLoginScreenState extends State<GuardianLoginScreen> {
                         EcoTextField(
                           controller: emailC,
                           hintText: "Email...",
+                          icon: Icon(
+                            Icons.mail,
+                            color: Color.fromARGB(255, 255, 134, 174),
+                          ),
                           validate: (v) {
                             if (!v!.contains("@gmail.com") && v.length < 0) {
                               return "email is badly formated";
@@ -141,8 +148,14 @@ class _GuardianLoginScreenState extends State<GuardianLoginScreen> {
                               });
                             },
                             icon: ispassword
-                                ? const Icon(Icons.visibility)
-                                : const Icon(Icons.visibility_off),
+                                ? const Icon(
+                                    Icons.visibility,
+                                    color: Color.fromARGB(255, 255, 134, 174),
+                                  )
+                                : const Icon(
+                                    Icons.visibility_off,
+                                    color: Color.fromARGB(255, 255, 134, 174),
+                                  ),
                           ),
                           validate: (v) {
                             if (v!.isEmpty) {

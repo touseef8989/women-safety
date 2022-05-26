@@ -1,79 +1,90 @@
-import 'package:women_safety_fyp/screens/guardian_screen/guardian-Login.dart';
-import 'package:women_safety_fyp/screens/guardian_screen/guardian_sing-up.dart';
-import 'package:women_safety_fyp/screens/user_Screen/homepage.dart';
-import 'package:women_safety_fyp/screens/user_Screen/user_login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:women_safety_fyp/screens/guardian_screen/guardian-Login.dart';
+import 'package:women_safety_fyp/screens/user_Screen/user_login_screen.dart';
 
+import '../../widgets/eco_button.dart';
 import '../admin/admin_login.dart';
 
-class LandingScren extends StatelessWidget {
-  String? userid;
-  LandingScren({this.userid});
+class LandingScren extends StatefulWidget {
+  const LandingScren({Key? key}) : super(key: key);
+  @override
+  State<LandingScren> createState() => _LandingScrenState();
+}
+
+class _LandingScrenState extends State<LandingScren> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "LOGIN WITH YOUR ACCOUNT",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                // box(context, () {
-                //   Navigator.push(context,
-                //       MaterialPageRoute(builder: (_) => AdminSignUp()));
-                // }, "LOGIN AS ADMIN"),
-                box(context, () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => UserLogin()));
-                }, "LOGIN AS USER"),
-                box(context, () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => GuardianLoginScreen()));
-                }, "LOGIN AS GUARDIAN"),
-              ],
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            image: NetworkImage(
+              "https://images.pexels.com/photos/2088210/pexels-photo-2088210.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget box(BuildContext context, VoidCallback click, String? title) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: GestureDetector(
-        onTap: click,
-        child: Container(
-          //width: double.infinity,
-          constraints: BoxConstraints(minHeight: 130),
-          decoration: BoxDecoration(
-              color: Colors.purple,
-              gradient: LinearGradient(colors: [
-                Colors.blue,
-                Colors.blueAccent.withOpacity(0.6),
-              ]),
-              borderRadius: BorderRadius.circular(30)),
-          child: Center(
-              child: Text(
-            "$title",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
+        child: ListView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: Center(
+                child: Title(
+                  color: Colors.pink,
+                  child: Text(
+                    "Login With your account",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.pink,
+                    ),
+                  ),
+                ),
+              ),
             ),
-          )),
+            Container(
+              width: 100.0,
+              height: 100.0,
+              decoration: new BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                    color: Color.fromARGB(255, 253, 237, 242),
+                    width: 10.0,
+                    style: BorderStyle.solid),
+                image: new DecorationImage(
+                  fit: BoxFit.fitHeight,
+                  image: NetworkImage(
+                      "https://img.myloview.com/stickers/women-protection-rgb-color-icon-protect-girls-against-violence-female-empowerment-women-safety-gender-equality-provide-peace-and-security-isolated-vector-illustration-simple-filled-line-drawing-700-267417018.jpg"),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            EcoButton(
+              title: "Login As Admin",
+              onPress: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => UserLogin()));
+              },
+            ),
+            EcoButton(
+              title: "Login As User",
+              onPress: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => GuardianLoginScreen()));
+              },
+            ),
+            EcoButton(
+              title: "Login As Admin",
+              onPress: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => AdminLoginScreen()));
+              },
+            ),
+          ],
         ),
       ),
     );

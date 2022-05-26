@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:background_sms/background_sms.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -8,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:uuid/uuid.dart';
@@ -182,39 +180,47 @@ class _MessageTextFieldState extends State<MessageTextField> {
           Expanded(
             child: Visibility(
               visible: !widget.hide,
-              child: TextField(
-                controller: _controller,
-                readOnly: widget.hide,
-                decoration: InputDecoration(
-                  labelText: widget.hide == false
-                      ? "Type your Message"
-                      : "resolved you can not type",
-                  fillColor: Colors.grey[100],
-                  filled: true,
-                  prefixIcon: Visibility(
-                    visible: !widget.hide,
-                    child: IconButton(
-                        onPressed: () {
-                          // getImage();
-                          showModalBottomSheet(
-                              backgroundColor: Colors.transparent,
-                              context: context,
-                              builder: (builder) {
-                                return bottomSheet();
-                              });
-                        },
-                        icon: Icon(
-                          Icons.add_box_rounded,
-                          size: 30,
-                          color: Colors.blue,
-                        )),
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      width: 0,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.pink,
+                ),
+                child: TextField(
+                  cursorColor: Colors.pink,
+                  controller: _controller,
+                  readOnly: widget.hide,
+                  decoration: InputDecoration(
+                    labelText: widget.hide == false
+                        ? "Type your Message"
+                        : "resolved you can not type",
+                    fillColor: Colors.grey[100],
+                    filled: true,
+                    prefixIcon: Visibility(
+                      visible: !widget.hide,
+                      child: IconButton(
+                          onPressed: () {
+                            // getImage();
+                            showModalBottomSheet(
+                                backgroundColor:
+                                    Color.fromARGB(255, 248, 133, 172),
+                                context: context,
+                                builder: (builder) {
+                                  return bottomSheet();
+                                });
+                          },
+                          icon: Icon(
+                            Icons.add_box_rounded,
+                            size: 30,
+                            color: Color.fromARGB(255, 248, 133, 172),
+                          )),
                     ),
-                    gapPadding: 10,
-                    borderRadius: BorderRadius.circular(5),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        width: 0,
+                      ),
+                      gapPadding: 10,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
                   ),
                 ),
               ),
@@ -277,7 +283,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.teal,
+                  color: Color.fromARGB(255, 248, 133, 172),
                 ),
                 child: Icon(
                   Icons.send,
@@ -300,7 +306,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-          child: Column(
+          child: ListView(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

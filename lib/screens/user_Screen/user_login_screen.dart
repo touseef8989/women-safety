@@ -86,15 +86,38 @@ class _UserLoginState extends State<UserLogin> {
             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const SizedBox(
-                height: 100,
+                height: 40,
               ),
               const Text(
                 "User Login",
                 textAlign: TextAlign.center,
-                style: EcoStyle.boldStyle,
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 255, 117, 163),
+                ),
               ),
               const SizedBox(
-                height: 50,
+                height: 20,
+              ),
+              Container(
+                width: 100.0,
+                height: 100.0,
+                decoration: new BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                      color: Color.fromARGB(255, 253, 237, 242),
+                      width: 10.0,
+                      style: BorderStyle.solid),
+                  image: new DecorationImage(
+                    fit: BoxFit.fitHeight,
+                    image: NetworkImage(
+                        "https://img.myloview.com/stickers/women-protection-rgb-color-icon-protect-girls-against-violence-female-empowerment-women-safety-gender-equality-provide-peace-and-security-isolated-vector-illustration-simple-filled-line-drawing-700-267417018.jpg"),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
               ),
               Column(
                 children: [
@@ -104,6 +127,10 @@ class _UserLoginState extends State<UserLogin> {
                         children: [
                           EcoTextField(
                             controller: emailC,
+                            icon: Icon(
+                              Icons.mail,
+                              color: Color.fromARGB(255, 255, 134, 174),
+                            ),
                             hintText: "Email...",
                             validate: (v) {
                               if (!v!.contains("@gmail.com") && v.length < 0) {
@@ -123,8 +150,14 @@ class _UserLoginState extends State<UserLogin> {
                                 });
                               },
                               icon: ispassword
-                                  ? const Icon(Icons.visibility)
-                                  : const Icon(Icons.visibility_off),
+                                  ? const Icon(
+                                      Icons.visibility,
+                                      color: Color.fromARGB(255, 255, 134, 174),
+                                    )
+                                  : const Icon(
+                                      Icons.visibility_off,
+                                      color: Color.fromARGB(255, 255, 134, 174),
+                                    ),
                             ),
                             validate: (v) {
                               if (v!.isEmpty) {

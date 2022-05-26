@@ -33,52 +33,36 @@ class _GuardianDrawerState extends State<GuardianDrawer> {
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Color.fromARGB(255, 248, 133, 172),
             ),
             child: Container(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Stack(
-                    children: [
-                      CircleAvatar(
-                        radius: 40,
-                        child: ClipOval(
-                          child: SizedBox(
-                            height: 100,
-                            width: 100,
-                            child: Image.asset("images/g-logo.jpg"),
-                          ),
-                        ),
-                      ),
-                    ],
+                  Text(
+                    "Gurdian Detail",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        color: Colors.white),
                   )
                 ],
               ),
             ),
           ),
           InkWell(
-            splashColor: Colors.blue,
+            splashColor: Colors.pink,
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (_) => DoctorProfile()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => GuardianProfile()));
             },
             child: PatientProfileDrawer(
               icon: Icons.person,
               text: "Profile",
             ),
           ),
-          // InkWell(
-          //   splashColor: Colors.blue,
-          //   onTap: () {
-          //     // print("cheeck${widget.userid}");
-          //   },
-          //   child: PatientProfileDrawer(
-          //     icon: Icons.settings,
-          //     text: "Settings",
-          //   ),
-          // ),
           InkWell(
-            splashColor: Colors.blue,
+            splashColor: Colors.pink,
             onTap: () {
               FirebaseAuth.instance.signOut();
               Navigator.push(

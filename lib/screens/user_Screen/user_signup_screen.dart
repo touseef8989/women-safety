@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:women_safety_fyp/screens/user_Screen/user_login_screen.dart';
-import 'package:women_safety_fyp/services/share_preff.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -116,10 +115,34 @@ class _PatientSignupScreenState extends State<PatientSignupScreen> {
                 const Text(
                   "User Signup",
                   textAlign: TextAlign.center,
-                  style: EcoStyle.boldStyle,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 255, 117, 163),
+                  ),
                 ),
+
                 const SizedBox(
-                  height: 60,
+                  height: 20,
+                ),
+                Container(
+                  width: 100.0,
+                  height: 100.0,
+                  decoration: new BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                        color: Color.fromARGB(255, 253, 237, 242),
+                        width: 10.0,
+                        style: BorderStyle.solid),
+                    image: new DecorationImage(
+                      fit: BoxFit.fitHeight,
+                      image: NetworkImage(
+                          "https://img.myloview.com/stickers/women-protection-rgb-color-icon-protect-girls-against-violence-female-empowerment-women-safety-gender-equality-provide-peace-and-security-isolated-vector-illustration-simple-filled-line-drawing-700-267417018.jpg"),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
 
                 Column(
@@ -141,7 +164,10 @@ class _PatientSignupScreenState extends State<PatientSignupScreen> {
                                 isPassowrd: false,
                                 controller: nameC,
                                 hintText: "Name...",
-                                icon: const Icon(Icons.email),
+                                icon: const Icon(
+                                  Icons.email,
+                                  color: Color.fromARGB(255, 255, 134, 174),
+                                ),
                               ),
                               EcoTextField(
                                 check: true,
@@ -155,7 +181,10 @@ class _PatientSignupScreenState extends State<PatientSignupScreen> {
                                 isPassowrd: false,
                                 controller: phoneC,
                                 hintText: "Phone...",
-                                icon: const Icon(Icons.phone),
+                                icon: const Icon(
+                                  Icons.phone,
+                                  color: Color.fromARGB(255, 255, 134, 174),
+                                ),
                               ),
                               EcoTextField(
                                 check: true,
@@ -170,7 +199,10 @@ class _PatientSignupScreenState extends State<PatientSignupScreen> {
                                 isPassowrd: false,
                                 controller: emailC,
                                 hintText: "Email...",
-                                icon: const Icon(Icons.email),
+                                icon: const Icon(
+                                  Icons.email,
+                                  color: Color.fromARGB(255, 255, 134, 174),
+                                ),
                               ),
                               EcoTextField(
                                 check: true,
@@ -185,7 +217,10 @@ class _PatientSignupScreenState extends State<PatientSignupScreen> {
                                 isPassowrd: false,
                                 controller: guardianC,
                                 hintText: "Guardian Email...",
-                                icon: const Icon(Icons.email),
+                                icon: const Icon(
+                                  Icons.email,
+                                  color: Color.fromARGB(255, 255, 134, 174),
+                                ),
                               ),
                               EcoTextField(
                                 validate: (v) {
@@ -206,8 +241,16 @@ class _PatientSignupScreenState extends State<PatientSignupScreen> {
                                     });
                                   },
                                   icon: ispassword
-                                      ? const Icon(Icons.visibility)
-                                      : const Icon(Icons.visibility_off),
+                                      ? const Icon(
+                                          Icons.visibility,
+                                          color: Color.fromARGB(
+                                              255, 255, 134, 174),
+                                        )
+                                      : const Icon(
+                                          Icons.visibility_off,
+                                          color: Color.fromARGB(
+                                              255, 255, 134, 174),
+                                        ),
                                 ),
                               ),
                               EcoTextField(
@@ -227,8 +270,16 @@ class _PatientSignupScreenState extends State<PatientSignupScreen> {
                                     });
                                   },
                                   icon: isretypepassword
-                                      ? const Icon(Icons.visibility)
-                                      : const Icon(Icons.visibility_off),
+                                      ? const Icon(
+                                          Icons.visibility,
+                                          color: Color.fromARGB(
+                                              255, 255, 134, 174),
+                                        )
+                                      : const Icon(
+                                          Icons.visibility_off,
+                                          color: Color.fromARGB(
+                                              255, 255, 134, 174),
+                                        ),
                                 ),
                               ),
                               EcoButton(

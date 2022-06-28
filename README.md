@@ -4,7 +4,6 @@ A new Flutter project.
 
 ## Getting Started
 ## project screen shorta
-![image](https://user-images.githubusercontent.com/55014581/176156880-7ededb3d-d7ac-4c08-9649-8a0585d99594.png)
 ![user-login](https://user-images.githubusercontent.com/55014581/176157496-a7cd0261-fa71-4efb-886d-6e7b73eaaea5.jpg)
 ![user-signup](https://user-images.githubusercontent.com/55014581/176157499-e9326b3a-8553-469a-85d3-6c689546be52.jpg)
 ![gurdian-login](https://user-images.githubusercontent.com/55014581/176157832-663a4ae8-7a7c-48d6-b7e0-4d550875bed9.jpg)

@@ -86,7 +86,7 @@ class _MessageTextFieldState extends State<MessageTextField> {
 
     await _picker.pickImage(source: ImageSource.gallery).then((xFile) {
       if (xFile != null) {
-        imageFile = File(xFile.path());
+        imageFile = File(xFile.path);
         uploadImage();
       }
     });

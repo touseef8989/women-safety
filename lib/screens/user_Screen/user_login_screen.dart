@@ -1,15 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:women_safety_fyp/screens/dummy_home.dart';
-import 'package:women_safety_fyp/screens/user_Screen/homepage.dart';
-import 'package:women_safety_fyp/screens/user_Screen/user_dashboard.dart';
 import 'package:women_safety_fyp/screens/user_Screen/user_signup_screen.dart';
-import 'package:women_safety_fyp/services/share_preff.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../bottom_page.dart';
-import '../../services/firebase_services.dart';
-import '../../utils/styles.dart';
 import '../../widgets/eco_button.dart';
 import '../../widgets/ecotextfield.dart';
 
@@ -52,11 +47,14 @@ class _UserLoginState extends State<UserLogin> {
 
       try {
         UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-            email: emailC.text, password: passwordC.text);
+          email: emailC.text,
+          password: passwordC.text,
+        );
 
         print("Login Sucessfull");
         _firestore.collection('users').doc(_auth.currentUser!.uid).get().then(
-            (value) => userCredential.user!.updateDisplayName(value['name']));
+              (value) => userCredential.user!.updateDisplayName(value['name']),
+            );
         if (userCredential != null) {
           setState(() {
             formStateLoading = false;

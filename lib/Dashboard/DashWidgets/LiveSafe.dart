@@ -32,7 +32,8 @@ class LiveSafe extends StatelessWidget {
         'https://www.google.com/maps/search/?api=1&query=$location';
 
     try {
-      await launch(googleUrl);
+      // await launch(googleUrl);
+      await launchUrl(Uri.parse("$googleUrl"));
     } catch (e) {
       print(e);
       Fluttertoast.showToast(

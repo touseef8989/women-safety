@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:women_safety_fyp/screens/admin/admin_login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseServices {

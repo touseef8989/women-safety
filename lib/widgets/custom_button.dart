@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  String? title;
-  bool? isLoginButton;
-  VoidCallback? onPress;
-  bool? isLoading;
+  final String? title;
+  final bool? isLoginButton;
+  final VoidCallback? onPress;
+  final bool? isLoading;
 
   CustomButton(
       {Key? key,

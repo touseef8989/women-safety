@@ -106,7 +106,6 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     checkStatus();
-    final bottomPadding = MediaQuery.of(context).padding.bottom;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(

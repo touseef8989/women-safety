@@ -6,7 +6,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 // import 'package:path_provider/path_provider.dart';
-import 'package:url_launcher/url_launcher.dart';
+// import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class InAppWebViewScreen extends StatefulWidget {
   @override
@@ -148,9 +149,9 @@ class _InAppWebViewScreenState extends State<InAppWebViewScreen> {
                       "javascript",
                       "about"
                     ].contains(uri.scheme)) {
-                      if (await canLaunch(url)) {
+                      if (await canLaunchUrlString(url)) {
                         // Launch the App
-                        await launch(
+                        await launchUrlString(
                           url,
                         );
                         // and cancel the request

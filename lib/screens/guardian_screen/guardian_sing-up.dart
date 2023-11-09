@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../services/firebase_services.dart';
-import '../../utils/styles.dart';
 import '../../widgets/eco_button.dart';
 import '../../widgets/ecotextfield.dart';
 

@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:women_safety_fyp/screens/admin/admin_main_screen.dart';
 import '../../../widgets/ecotextfield.dart';
-import '../../utils/styles.dart';
 import '../../widgets/eco_button.dart';
 
 class AdminLoginScreen extends StatefulWidget {

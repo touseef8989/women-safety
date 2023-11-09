@@ -3,8 +3,10 @@ import 'package:women_safety_fyp/screens/guardian_screen/guardian_info_page.dart
 import 'package:flutter/material.dart';
 
 class GuardianDetailScreen extends StatelessWidget {
-  String? speciality;
+  final String? speciality;
+
   GuardianDetailScreen({this.speciality});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

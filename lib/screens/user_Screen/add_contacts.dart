@@ -91,7 +91,7 @@ class _AddContactsState extends State<AddContacts> {
   }
 
   ListView getContactListView() {
-    TextStyle titleStyle = Theme.of(context).textTheme.subtitle1!;
+    TextStyle titleStyle = Theme.of(context).textTheme.titleMedium!;
     return ListView.builder(
       shrinkWrap: true,
       itemCount: count,

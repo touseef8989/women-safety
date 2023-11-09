@@ -5,14 +5,13 @@ import 'package:flutter/material.dart';
 
 import '../../utils/styles.dart';
 // import '../chat/patient_chat.dart';
-import 'guardian_consultation_names_list.dart';
 
 class GurdianInfo extends StatelessWidget {
-  String? Name;
-  String? info;
-  String? id;
-  String? email;
-  // String?
+  final String? Name;
+  final String? info;
+  final String? id;
+  final String? email;
+  // final String?
 
   GurdianInfo({
     this.Name,

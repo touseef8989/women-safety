@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:women_safety_fyp/utils/styles.dart';
 import 'package:women_safety_fyp/widgets/eco_button.dart';
 import 'package:women_safety_fyp/widgets/ecotextfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';

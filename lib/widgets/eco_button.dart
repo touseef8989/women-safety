@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class EcoButton extends StatelessWidget {
-  String? title;
-  bool? isLoginButton;
-  VoidCallback? onPress;
-  bool? isLoading;
-  bool _eaditnamec = true;
-  bool _eaditemailc = true;
-  bool _eaditpasswordc = true;
+  final String? title;
+  final bool? isLoginButton;
+  final VoidCallback? onPress;
+  final bool? isLoading;
+  // final bool _eaditnamec = true;
+  // final bool _eaditemailc = true;
+  // final bool _eaditpasswordc = true;
 
   EcoButton({
     Key? key,

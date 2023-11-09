@@ -1,13 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:women_safety_fyp/screens/guardian_screen/guardian_info_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../chat_module/chat_screen.dart';
 import '../../utils/styles.dart';
-import 'guardian_consultation_names_list.dart';
 
 class DoctorCard extends StatelessWidget {
   const DoctorCard({

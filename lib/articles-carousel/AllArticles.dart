@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:women_safety_fyp/utils/constants.dart';
 
-import 'SafeWebView.dart';
-
 class AllArticles extends StatefulWidget {
   AllArticles({Key? key}) : super(key: key);
 

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import '../../utils/styles.dart';
 
 class PatientProfileDrawer extends StatelessWidget {
-  IconData? icon;
-  String? text;
+  final IconData? icon;
+  final String? text;
+
   PatientProfileDrawer({
     this.icon,
     this.text,

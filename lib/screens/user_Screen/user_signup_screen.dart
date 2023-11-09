@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../services/firebase_services.dart';
-import '../../utils/styles.dart';
 import '../../widgets/eco_button.dart';
 import '../../widgets/ecotextfield.dart';
 
@@ -69,7 +68,7 @@ class _PatientSignupScreenState extends State<PatientSignupScreen> {
         String? accountstatus =
             await FirebaseServices.createAccount(emailC.text, passwordC.text);
 
-        await _firestore.collection('users').doc(_auth.currentUser!.uid).set({
+        await _firestore.collection('users').doc(_auth.currentUser?.uid).set({
           "name": nameC.text,
           "email": emailC.text,
           "guardian_email": guardianC.text,

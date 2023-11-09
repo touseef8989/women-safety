@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class EcoTextField extends StatefulWidget {
-  String? hintText;
-  TextEditingController? controller;
-  String? Function(String?)? validate;
-  Widget? icon;
-  bool isPassowrd;
-  bool check;
-  int? maxLines;
-  TextInputType? keyboard;
+  final String? hintText;
+  final TextEditingController? controller;
+  final String? Function(String?)? validate;
+  final Widget? icon;
+  final bool isPassowrd;
+  final bool check;
+  final int? maxLines;
+  final TextInputType? keyboard;
 
   final TextInputAction? inputAction;
   final FocusNode? focusNode;

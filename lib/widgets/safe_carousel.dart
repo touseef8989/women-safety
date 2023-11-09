@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:women_safety_fyp/Dashboard/Articles%20-%20SafeCarousel/ArticleDesc.dart';
 import 'package:women_safety_fyp/Dashboard/Articles%20-%20SafeCarousel/SadeWebView.dart';
 import 'package:women_safety_fyp/utils/constants.dart';
 

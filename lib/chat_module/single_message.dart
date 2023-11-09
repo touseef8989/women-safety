@@ -148,7 +148,8 @@ class SingleMessage extends StatelessWidget {
                         Divider(),
                         TextButton(
                           onPressed: () async {
-                            await launch("$message");
+                            // await launch("$message");
+                            await launchUrl(Uri.parse("$message"));
                           },
                           child: Text(
                             message!,

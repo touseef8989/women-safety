@@ -49,7 +49,7 @@ class _SelectContactState extends State<SelectContact> {
     List<Contact> _contacts = (await ContactsService.getContacts()).toList();
     _contacts.forEach((contact) {
       Color baseColor = colors[colorIndex];
-      contactsColorMap[contact.displayName!] = baseColor;
+      contactsColorMap[contact.displayName ?? "N"] = baseColor;
       colorIndex++;
       if (colorIndex == colors.length) {
         colorIndex = 0;
